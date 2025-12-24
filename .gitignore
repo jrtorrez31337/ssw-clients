@@ -70,3 +70,5 @@ bun.lock
 
 # Monorepo specific
 _ingest/
+logs/
+.pids/

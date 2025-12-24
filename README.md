@@ -18,33 +18,57 @@ pnpm install
 
 ### Running Apps
 
-#### Web Client (Vite + React)
+#### Quick Start (Recommended)
 ```bash
-# Development server (http://localhost:3000)
-pnpm web:dev
+# Start both web and mobile
+pnpm start
 
-# Build for production
-pnpm web:build
+# Check status
+pnpm status
 
-# Preview production build
-pnpm web:preview
+# Stop all services
+pnpm stop
 ```
 
-#### Mobile Client (Expo + React Native)
-```bash
-# Start development server
-pnpm mobile:start
-# Then press "i" for iOS or "a" for Android
+#### Individual Apps
 
-# Start web preview
+**Web Client** (http://localhost:3000)
+```bash
+# Start web only
+pnpm start:web
+
+# Stop web
+pnpm stop:web
+
+# Or use direct command
+pnpm web:dev
+```
+
+**Mobile Client** (Metro on port 3030)
+```bash
+# Start mobile only
+pnpm start:mobile
+
+# Stop mobile
+pnpm stop:mobile
+
+# Or use direct command
+pnpm mobile:start
+
+# Web preview
 pnpm mobile:start-web
 
-# Direct iOS launch
+# iOS simulator
 pnpm mobile:ios
 
-# Direct Android launch
+# Android emulator
 pnpm mobile:android
 ```
+
+**Service Ports:**
+- Web: http://localhost:3000
+- Mobile Metro: http://localhost:3030
+- Logs: `logs/web.log` and `logs/mobile.log`
 
 ## Repository Structure
 
