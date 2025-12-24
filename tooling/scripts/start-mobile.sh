@@ -3,6 +3,10 @@
 
 set -e
 
+# Ensure pnpm is in PATH
+export PNPM_HOME="${PNPM_HOME:-$HOME/.local/share/pnpm}"
+export PATH="$PNPM_HOME:$PATH"
+
 echo "📱 Starting SSW Mobile Client..."
 echo "   Metro Port: 3030"
 echo "   Host: 0.0.0.0 (all interfaces)"

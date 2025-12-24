@@ -3,6 +3,10 @@
 
 set -e
 
+# Ensure pnpm is in PATH
+export PNPM_HOME="${PNPM_HOME:-$HOME/.local/share/pnpm}"
+export PATH="$PNPM_HOME:$PATH"
+
 echo "🌐 Starting SSW Web Client..."
 echo "   Port: 3000"
 echo "   Host: 0.0.0.0 (all interfaces)"

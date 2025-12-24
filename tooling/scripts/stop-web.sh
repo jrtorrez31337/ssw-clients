@@ -3,6 +3,10 @@
 
 set -e
 
+# Ensure pnpm is in PATH
+export PNPM_HOME="${PNPM_HOME:-$HOME/.local/share/pnpm}"
+export PATH="$PNPM_HOME:$PATH"
+
 echo "🛑 Stopping SSW Web Client..."
 
 cd "$(dirname "$0")/../.."

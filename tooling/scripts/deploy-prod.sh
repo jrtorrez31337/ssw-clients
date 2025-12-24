@@ -4,6 +4,10 @@
 
 set -e
 
+# Ensure pnpm is in PATH
+export PNPM_HOME="${PNPM_HOME:-$HOME/.local/share/pnpm}"
+export PATH="$PNPM_HOME:$PATH"
+
 # Color codes
 RED='\033[0;31m'
 GREEN='\033[0;32m'
