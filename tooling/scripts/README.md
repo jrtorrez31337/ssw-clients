@@ -296,8 +296,12 @@ ops start --mobile
 ```
 
 **Ports:**
-- Web: http://localhost:3000
-- Mobile: http://localhost:3030
+- Web: Port 3000 on 0.0.0.0 (all interfaces)
+  - Local: http://localhost:3000
+  - Network: http://[your-ip]:3000
+- Mobile: Port 3030 on 0.0.0.0 (all interfaces)
+  - Local: http://localhost:3030
+  - Network: http://[your-ip]:3030
 
 ### Stopping Services
 

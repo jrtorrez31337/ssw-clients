@@ -123,6 +123,8 @@ wait_for_healthy() {
   while [ $waited -lt $timeout ]; do
     if curl -s --connect-timeout 2 "$url" >/dev/null 2>&1; then
       log_success "$service_name is healthy"
+      log_info "Access locally: $url"
+      log_info "Access from network: http://$(hostname -I | awk '{print $1}'):${url##*:}"
       return 0
     fi
     sleep 2

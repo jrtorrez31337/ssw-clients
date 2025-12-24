@@ -5,7 +5,9 @@ set -e
 
 echo "🌐 Starting SSW Web Client..."
 echo "   Port: 3000"
-echo "   URL: http://localhost:3000"
+echo "   Host: 0.0.0.0 (all interfaces)"
+echo "   Local URL: http://localhost:3000"
+echo "   Network URL: http://0.0.0.0:3000"
 echo ""
 
 cd "$(dirname "$0")/../.."
@@ -35,7 +37,9 @@ echo "⏳ Waiting for server to be ready..."
 # Wait for server to be ready (max 30 seconds)
 for i in {1..30}; do
   if curl -s http://localhost:3000 >/dev/null 2>&1; then
-    echo "✅ Web client ready at http://localhost:3000"
+    echo "✅ Web client ready!"
+    echo "   Access locally: http://localhost:3000"
+    echo "   Access from network: http://$(hostname -I | awk '{print $1}'):3000"
     exit 0
   fi
   sleep 1

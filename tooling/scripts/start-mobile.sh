@@ -5,7 +5,9 @@ set -e
 
 echo "📱 Starting SSW Mobile Client..."
 echo "   Metro Port: 3030"
-echo "   Dev Server: http://localhost:3030"
+echo "   Host: 0.0.0.0 (all interfaces)"
+echo "   Local URL: http://localhost:3030"
+echo "   Network URL: http://$(hostname -I | awk '{print $1}'):3030"
 echo ""
 
 cd "$(dirname "$0")/../.."
@@ -17,9 +19,9 @@ if lsof -Pi :3030 -sTCP:LISTEN -t >/dev/null 2>&1; then
   sleep 1
 fi
 
-# Start mobile in background with custom port
+# Start mobile in background with custom port and host
 cd apps/mobile
-RCT_METRO_PORT=3030 pnpm start --port 3030 > ../../logs/mobile.log 2>&1 &
+RCT_METRO_PORT=3030 pnpm start --port 3030 --host 0.0.0.0 > ../../logs/mobile.log 2>&1 &
 MOBILE_PID=$!
 cd ../..
 
