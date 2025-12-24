@@ -15,6 +15,9 @@
     "typecheck": "pnpm --recursive typecheck",
     "lint": "pnpm --recursive lint",
     "test": "pnpm --recursive test",
+    "check:drift": "./tooling/scripts/check-drift.sh",
+    "check:capabilities": "cd packages/flags && node src/check-capabilities.js",
+    "ci": "pnpm typecheck && pnpm check:drift && pnpm check:capabilities",
     "clean": "pnpm --recursive clean && rm -rf node_modules"
   },
   "keywords": [
