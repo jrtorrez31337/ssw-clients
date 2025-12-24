@@ -1,22 +1,16 @@
 import { apiClient } from './client';
-import { AuthResponse, UserProfile } from '@/types/api';
-
-export interface SignupRequest {
-  email: string;
-  password: string;
-  display_name: string;
-}
-
-export interface LoginRequest {
-  email: string;
-  password: string;
-}
+import type {
+  AuthResponse,
+  UserProfile,
+  LoginCredentials,
+  SignupCredentials
+} from '@ssw/contracts';
 
 export const authApi = {
-  signup: (data: SignupRequest) =>
+  signup: (data: SignupCredentials) =>
     apiClient.post<AuthResponse>('/auth/signup', data),
 
-  login: (data: LoginRequest) =>
+  login: (data: LoginCredentials) =>
     apiClient.post<AuthResponse>('/auth/login', data),
 
   getMe: () => apiClient.get<UserProfile>('/auth/me'),

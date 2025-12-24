@@ -1,5 +1,5 @@
 import { storage } from '@/utils/storage';
-import { ApiErrorResponse, ApiResponse } from '@/types/api';
+import type { ApiErrorResponse, ApiResponse } from '@ssw/contracts';
 import { config, DEV_INSTRUCTIONS } from '@/constants/config';
 
 const API_BASE_URL = config.API_BASE_URL;

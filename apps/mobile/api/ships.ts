@@ -1,12 +1,5 @@
 import { apiClient } from './client';
-import { Ship, ShipStats, ShipType } from '@/types/api';
-
-export interface CreateShipRequest {
-  owner_id: string;
-  ship_type: ShipType;
-  name?: string;
-  stat_allocation: ShipStats;
-}
+import type { Ship, CreateShipRequest } from '@ssw/contracts';
 
 export const shipApi = {
   create: (data: CreateShipRequest) => apiClient.post<Ship>('/ships', data),

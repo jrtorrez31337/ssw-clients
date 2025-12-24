@@ -1,13 +1,7 @@
 import { apiClient } from './client';
+import type { Character, CharacterAttributes } from '@ssw/contracts';
 
-export interface CharacterAttributes extends Record<string, number> {
-  piloting: number;
-  engineering: number;
-  science: number;
-  tactics: number;
-  leadership: number;
-}
-
+// Web-specific request type that includes profile_id
 export interface CreateCharacterRequest {
   profile_id: string;
   name: string;
@@ -15,14 +9,8 @@ export interface CreateCharacterRequest {
   attributes: CharacterAttributes;
 }
 
-export interface Character {
-  id: string;
-  profile_id: string;
-  name: string;
-  home_sector: string;
-  attributes: CharacterAttributes;
-  created_at: string;
-}
+// Re-export for backward compatibility
+export type { CharacterAttributes };
 
 export const characterApi = {
   create: async (data: CreateCharacterRequest) => {

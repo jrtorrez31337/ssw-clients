@@ -1,9 +1,9 @@
 import createContextHook from '@nkzw/create-context-hook';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState, useEffect } from 'react';
-import { authApi, LoginRequest, SignupRequest } from '@/api/auth';
+import { authApi } from '@/api/auth';
 import { storage } from '@/utils/storage';
-import { AuthResponse } from '@/types/api';
+import type { AuthResponse, LoginCredentials, SignupCredentials } from '@ssw/contracts';
 
 export const [AuthProvider, useAuth] = createContextHook(() => {
   const queryClient = useQueryClient();
@@ -27,7 +27,7 @@ export const [AuthProvider, useAuth] = createContextHook(() => {
   }, []);
 
   const signupMutation = useMutation({
-    mutationFn: (data: SignupRequest) => authApi.signup(data),
+    mutationFn: (data: SignupCredentials) => authApi.signup(data),
     onSuccess: async (response: AuthResponse) => {
       await storage.setAccessToken(response.access_token);
       await storage.setRefreshToken(response.refresh_token);
@@ -39,7 +39,7 @@ export const [AuthProvider, useAuth] = createContextHook(() => {
   });
 
   const loginMutation = useMutation({
-    mutationFn: (data: LoginRequest) => authApi.login(data),
+    mutationFn: (data: LoginCredentials) => authApi.login(data),
     onSuccess: async (response: AuthResponse) => {
       await storage.setAccessToken(response.access_token);
       await storage.setRefreshToken(response.refresh_token);

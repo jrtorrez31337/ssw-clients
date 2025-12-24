@@ -1,36 +1,13 @@
 import { apiClient } from './client';
+import type {
+  Ship,
+  ShipStats,
+  ShipType,
+  CreateShipRequest,
+} from '@ssw/contracts';
 
-export interface ShipStats extends Record<string, number> {
-  hull_strength: number;
-  shield_capacity: number;
-  speed: number;
-  cargo_space: number;
-  sensors: number;
-}
-
-export type ShipType = 'scout' | 'fighter' | 'trader' | 'explorer';
-
-export interface CreateShipRequest {
-  owner_id: string;
-  ship_type: ShipType;
-  name?: string;
-  stat_allocation: ShipStats;
-}
-
-export interface Ship {
-  id: string;
-  owner_id: string;
-  ship_type: ShipType;
-  name?: string;
-  hull_points: number;
-  hull_max: number;
-  shield_points: number;
-  shield_max: number;
-  cargo_capacity: number;
-  location_sector: string;
-  created_at: string;
-  stat_allocation?: ShipStats;
-}
+// Re-export for backward compatibility
+export type { ShipStats, ShipType };
 
 export const shipApi = {
   create: async (data: CreateShipRequest) => {
