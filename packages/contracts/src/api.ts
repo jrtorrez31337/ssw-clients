@@ -30,8 +30,10 @@ export interface LoginCredentials {
   password: string;
 }
 
-export interface SignupCredentials extends LoginCredentials {
-  display_name?: string;
+export interface SignupCredentials {
+  email: string;
+  password: string;
+  display_name: string;
 }
 
 // ============================================================================
